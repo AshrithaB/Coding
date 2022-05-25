@@ -1,6 +1,21 @@
 class Solution:
     def minSwaps(self, nums: List[int]) -> int:
-        total, curSwap = 0, 0
+        totalOnes = nums.count(1)
+        curZeros = 0
+        for i in range(totalOnes):
+            if nums[i] == 0:
+                curZeros += 1
+        minSwap = curZeros
+        doublenums = nums+nums[:totalOnes]
+        n = len(doublenums)
+        for r in range(totalOnes, n):
+            if doublenums[r-totalOnes] == 0:
+                curZeros -= 1
+            if doublenums[r] == 0:
+                curZeros += 1
+            minSwap = min(minSwap,curZeros)
+        return minSwap
+        '''total, curSwap = 0, 0
         for n in nums:
             if n == 1:
                 total += 1
@@ -17,4 +32,4 @@ class Solution:
             if doublenums[r] == 0:
                 curSwap += 1
             minSwap = min(minSwap,curSwap)
-        return minSwap
+        return minSwap'''
