@@ -5,10 +5,9 @@ class Solution:
         elif len(nums) == k: 
             return max(nums) - min(nums)
         nums.sort()
-        minDiff = max(nums[:k]) - min(nums[:k])
-        l = 1
-        for r in range(k, len(nums)):            
-            curDiff = max(nums[l:r+1]) - min(nums[l:r+1])
-            minDiff = min(minDiff, curDiff)
+        minDiff = nums[-1]
+        l = 0
+        for r in range(k-1, len(nums)):
+            minDiff = min(minDiff, nums[r] - nums[l])
             l += 1
         return minDiff
