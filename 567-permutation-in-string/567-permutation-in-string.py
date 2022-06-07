@@ -25,5 +25,5 @@ class Solution:
             elif s2Count[index]+1 == s1Count[index]:
                 match -= 1
             l += 1
-        return False if match != 26 else True
+        return match == 26
         
