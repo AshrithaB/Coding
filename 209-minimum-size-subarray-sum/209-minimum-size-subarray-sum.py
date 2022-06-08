@@ -1,11 +1,13 @@
 import math
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        start, maxSum, minLen = 0, 0, float("inf")
-        for end in range(len(nums)):
-            maxSum += nums[end]
-            while maxSum >= target:
-                minLen = min(minLen, end-start+1)
-                maxSum -= nums[start]
-                start += 1
-        return 0 if minLen == float("inf") else minLen
+        minLen, curSum = float("infinity"), 0
+        l = 0
+        for r in range(len(nums)):
+            curSum += nums[r]
+            while curSum >= target:
+                minLen = min(minLen, r-l+1)
+                curSum -= nums[l]
+                l += 1                
+        return minLen if minLen != float("infinity") else 0
+        
