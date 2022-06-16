@@ -1,20 +1,12 @@
 class Solution:
     def findPairs(self, nums: List[int], k: int) -> int:
-        nums.sort()
-        i, j = 0, 1
         count = 0
-        while j < len(nums) and i < j:
-            if nums[j] - nums[i] == k:
+        hashMap = {}
+        for n in nums:
+            hashMap[n] = 1 + hashMap.get(n, 0)
+        for h in hashMap:
+            if k == 0:
+                count += hashMap[h] > 1
+            elif h+k in hashMap:
                 count += 1
-                i += 1
-                j += 1
-                while j < len(nums) and nums[j] == nums[j-1]:
-                    j += 1
-            elif nums[j] - nums[i] < k:
-                j += 1
-            elif nums[j] - nums[i] > k:
-                i += 1
-                if j - i == 0:
-                    j += 1
         return count
-        
