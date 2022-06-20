@@ -6,12 +6,12 @@ class Solution:
         rows, cols = len(grid), len(grid[0])
         visit = set()
     
-        def bfs(r, c):
+        def dfs(r, c):
             q = collections.deque()
             visit.add((r, c))
             q.append((r, c))
             while q:
-                row, col = q.popleft()
+                row, col = q.pop()
                 directions = [[-1, 0],[0, -1],[1, 0],[0, 1]]
                 for dr, dc in directions:
                     r, c = row + dr, col + dc
@@ -23,7 +23,7 @@ class Solution:
         for r in range(rows):
             for c in range(cols):
                 if grid[r][c] == "1" and (r, c) not in visit:
-                    bfs(r, c)
+                    dfs(r, c)
                     island += 1
         return island
         
