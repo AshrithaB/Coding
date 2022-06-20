@@ -7,14 +7,12 @@ class Solution:
         while l<r:
             if maxL <= maxR:
                 l += 1
-                if min(maxL, maxR) - height[l] > 0:
-                    water += min(maxL, maxR) - height[l]
                 maxL = max(maxL, height[l])
+                water += maxL - height[l]
             else:
                 r -= 1
-                if min(maxL, maxR) - height[r] > 0:
-                    water += min(maxL, maxR) - height[r]
                 maxR = max(maxR, height[r])
+                water += maxR - height[r]
         return water
             
             
