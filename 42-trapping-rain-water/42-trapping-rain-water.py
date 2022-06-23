@@ -1,10 +1,10 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        if not height: return 0
+        if not height: return 0 
         maxL, maxR = height[0], height[-1]
         l, r = 0, len(height)-1
         water = 0
-        while l<r:
+        while l < r:
             if maxL <= maxR:
                 l += 1
                 maxL = max(maxL, height[l])
@@ -14,5 +14,3 @@ class Solution:
                 maxR = max(maxR, height[r])
                 water += maxR - height[r]
         return water
-            
-            
