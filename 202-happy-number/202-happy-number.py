@@ -1,7 +1,5 @@
 class Solution:
     def isHappy(self, n: int) -> bool:
-        seen = set()
-        
         def next_n(n):
             total_sum = 0
             while n > 0:
@@ -9,8 +7,9 @@ class Solution:
                 total_sum += rem*rem
                 n = n//10
             return total_sum
-        
-        while n != 1 and n not in seen:
-            seen.add(n)
-            n = next_n(n)
-        return n==1
+        slow = n
+        fast = next_n(n)
+        while fast != 1 and slow != fast:
+            slow = next_n(slow)
+            fast = next_n(next_n(fast))
+        return fast == 1
