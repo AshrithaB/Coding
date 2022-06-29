@@ -14,7 +14,7 @@ class Solution:
                     elif empty-1 < n and box[i][empty-1] == '.':
                         box[i][empty-1] = '#'
                         box[i][j] = '.'
-        res = np.array([""]*(n*m)).reshape(n,m)
+        res = [["" for l in range(m)] for r in range(n)]
         k = m - 1
         for x in range(m):
             for y in range(n):
