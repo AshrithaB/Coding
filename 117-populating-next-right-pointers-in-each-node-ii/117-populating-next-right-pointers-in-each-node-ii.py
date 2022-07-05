@@ -11,20 +11,19 @@ class Node:
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
         if not root: return None
-        q = deque()
-        q.append(root)
-        while len(q):
-            size = len(q)
+        head = root
+        while head:
             dummy = Node()
-            while size > 0:
-                node = q.popleft()
-                dummy.next = node
-                dummy = dummy.next
-                if node.left != None:
-                    q.append(node.left)
-                if node.right != None:
-                    q.append(node.right)
-                size = size - 1
+            temp = dummy
+            while head:
+                if head.left:
+                    temp.next = head.left
+                    temp = temp.next
+                if head.right:
+                    temp.next = head.right
+                    temp = temp.next
+                head = head.next
+            head = dummy.next
         return root
                 
         
