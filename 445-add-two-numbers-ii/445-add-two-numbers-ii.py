@@ -5,7 +5,23 @@
 #         self.next = next
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
-        tail1, tail2 = self.reverse(l1), self.reverse(l2)
+        s1, s2 = [], []
+        while l1:
+            s1.append(l1.val)
+            l1 = l1.next
+        while l2:
+            s2.append(l2.val)
+            l2 = l2.next
+        c = 0
+        ans = None
+        while s1 or s2 or c:
+            v1 = s1.pop() if s1 else 0   
+            v2 = s2.pop() if s2 else 0   
+            c, s = divmod(v1 + v2 + c, 10)
+            ans = ListNode(s, ans)            
+        return ans
+            
+        '''tail1, tail2 = self.reverse(l1), self.reverse(l2)
         dummy = ListNode()
         add = dummy
         s, c = 0, 0
@@ -28,5 +44,5 @@ class Solution:
             prev = head
             head = tmp
         return prev
-       
+       '''
         
