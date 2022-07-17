@@ -11,7 +11,8 @@
 #         self.right = right
 class Solution:
     def sortedListToBST(self, head: Optional[ListNode]) -> Optional[TreeNode]:
-        if not head: return None        
+        if not head:
+            return None
         m = self.mid(head)
         root = TreeNode(m.val)
         if head == m:
@@ -19,7 +20,7 @@ class Solution:
         root.left = self.sortedListToBST(head)
         root.right = self.sortedListToBST(m.next)
         return root
-     
+        
     def mid(self, head):
         slow = fast = prev = head
         while fast and fast.next:
@@ -28,8 +29,5 @@ class Solution:
             fast = fast.next.next
         if prev:
             prev.next = None
-        return slow       
-        
-
-        
-        
+        return slow
+            
