@@ -8,14 +8,14 @@ class Solution:
         if not head or not head.next:
             return head
         dummy = ListNode(0, head)
-        prev, cur = dummy, head 
-        while cur and cur.next:
-            if cur.val != cur.next.val:
-                prev = cur
-                cur = cur.next
+        prev, curr = dummy, head
+        while curr and curr.next:
+            if curr.val != curr.next.val:
+                prev = curr
+                curr = curr.next
             else:
-                while cur and cur.next and cur.val == cur.next.val:
-                    cur = cur.next
-                prev.next = cur.next
-                cur = cur.next
-        return dummy.next 
+                while curr and curr.next and curr.val == curr.next.val:
+                    curr = curr.next
+                prev.next = curr.next
+                curr = curr.next
+        return dummy.next
