@@ -10,7 +10,8 @@ class Node:
 
 class Solution:
     def connect(self, root: 'Node') -> 'Node':
-        if not root: return None
+        if not root:
+            return
         head = root
         while head:
             dummy = Node()
@@ -25,5 +26,5 @@ class Solution:
                 head = head.next
             head = dummy.next
         return root
-                
-        
+                        
+                    
