@@ -20,3 +20,4 @@ class Solution:
                 cur = nxt
                 nxt = cur.left
         return root
+        
