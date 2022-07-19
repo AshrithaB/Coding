@@ -5,9 +5,8 @@
 #         self.next = next
 class Solution:
     def sortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        if not head or not head.next:
+        if not head or not head.next: 
             return head
-        
         left = head
         right = self.getMid(head)
         tmp = right.next
@@ -17,7 +16,7 @@ class Solution:
         left = self.sortList(left)
         right = self.sortList(right)
         return self.mergeList(left, right)
-        
+    
     def getMid(self, head):
         slow, fast = head, head.next
         while fast and fast.next:
@@ -33,11 +32,10 @@ class Solution:
                 left = left.next
             else:
                 tail.next = right
-                right= right.next
+                right = right.next
             tail = tail.next
         if left:
             tail.next = left
         elif right:
             tail.next = right
         return dummy.next
-        
