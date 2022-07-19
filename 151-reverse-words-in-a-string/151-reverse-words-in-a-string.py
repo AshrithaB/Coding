@@ -1,9 +1,8 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
-        words = s.strip().split()
-        l, r = 0, len(words)-1
-        while l<r:
-            words[l], words[r] = words[r], words[l]
-            l, r = l+1, r-1
+        words = s.strip(' ').split()
+        i, j = 0, len(words)-1
+        while i<j:
+            words[i], words[j] = words[j], words[i]
+            i, j = i+1, j-1
         return ' '.join(words)
-        
