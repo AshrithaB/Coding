@@ -3,14 +3,22 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        k = k % len(nums)
-        def reverse(l,r):
-            while l<r:
-                nums[l], nums[r] = nums[r], nums[l]
-                l, r = l+1, r-1
-        reverse(0, len(nums)-1)
-        reverse(0, k-1)
-        reverse(k, len(nums)-1)
+        k = k%len(nums)
+        if k == 0:
+            return 
+        i, j = 0, len(nums)-1
+        while i<j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i, j = i+1, j-1
+        i, j = 0, k-1
+        while i<j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i, j = i+1, j-1
+        i, j = k, len(nums)-1
+        while i<j:
+            nums[i], nums[j] = nums[j], nums[i]
+            i, j = i+1, j-1
+        return nums
         
-        
+    
         
