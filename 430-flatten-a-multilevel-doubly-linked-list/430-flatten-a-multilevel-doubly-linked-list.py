@@ -22,15 +22,15 @@ class Solution:
             if cur.child:
                 tail = self.flat(child)
                 tail.next = nxt
+                cur.next = child
+                cur.child = None
+                child.prev = cur
                 if nxt:
                     nxt.prev = tail
-                cur.next = child
-                child.prev = cur
-                cur.child = None
                 cur = tail
             else:
                 cur = nxt
             if cur:
                 tail = cur
         return tail
-            
+    
