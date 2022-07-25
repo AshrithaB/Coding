@@ -15,11 +15,12 @@ class Solution:
         c = 0
         ans = None
         while s1 or s2 or c:
-            v1 = s1.pop() if s1 else 0   
-            v2 = s2.pop() if s2 else 0   
-            c, s = divmod(v1 + v2 + c, 10)
-            ans = ListNode(s, ans)            
+            val1 = s1.pop() if s1 else 0
+            val2 = s2.pop() if s2 else 0
+            c, rem = divmod(val1+val2+c, 10)
+            ans = ListNode(rem, ans)
         return ans
+            
             
         '''tail1, tail2 = self.reverse(l1), self.reverse(l2)
         dummy = ListNode()
