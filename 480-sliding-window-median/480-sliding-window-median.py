@@ -1,13 +1,12 @@
 class Solution:
     def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
         median = []
-        l = 0
-        for r in range(k, len(nums)+1):
-            arr = sorted(nums[l:r])
-            if k%2 == 0:
-                median.append((arr[k//2] + arr[(k//2)-1])/2)
-            else:
+        start = end = 0
+        for end in range(k, len(nums)+1):
+            arr = sorted(nums[start:end])
+            if k % 2:
                 median.append(arr[k//2])
-            l += 1
+            else:
+                median.append((arr[k//2] + arr[(k//2) - 1]) / 2)
+            start += 1
         return median
-        
