@@ -13,4 +13,3 @@ class Solution:
             i += 1
         c += min(prev, curr)
         return c
-        
