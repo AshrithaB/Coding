@@ -1,15 +1,14 @@
 class Solution:
     def validPalindrome(self, s: str) -> bool:
-        def palindrom(w, l, r):
-            while l < r:
-                if w[l] != w[r]:
+        def pali(s, l, r):
+            while l<r:
+                if s[l] != s[r]:
                     return False
                 l, r = l+1, r-1
             return True
-        i, j = 0, len(s)-1
-        while i<j:
-            if s[i] != s[j]:
-                return palindrom(s, i, j-1) or palindrom(s, i+1, j)
-            i, j = i+1, j-1
+        l, r = 0, len(s)-1    
+        while l<r:
+            if s[l]!=s[r]:
+                return pali(s, l, r-1) or pali(s, l+1,r)
+            l, r = l+1, r-1
         return True
-                    
