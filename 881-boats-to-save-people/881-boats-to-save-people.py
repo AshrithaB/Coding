@@ -4,10 +4,9 @@ class Solution:
         l, r = 0, len(people)-1
         count = 0
         while l <= r:
-            remain = limit - people[r]
+            rem = limit - people[r]
             r -= 1
             count += 1
-            if l <= r and remain >= people[l]:
+            if l <= r and people[l] <= rem:
                 l += 1
         return count
-        
