@@ -1,22 +1,20 @@
 class Solution:
     def longestSubarray(self, nums: List[int], limit: int) -> int:
-        res = 0
-        decQ = collections.deque()
+        ans = l = 0
         incQ = collections.deque()
-        l = r = 0
-        while r < len(nums):
-            while decQ and nums[r] > decQ[-1]: 
+        decQ = collections.deque()
+        for r in range(len(nums)):
+            while decQ and decQ[-1] < nums[r]:
                 decQ.pop()
-            decQ.append(nums[r])    
-            while incQ and nums[r] < incQ[-1]: 
+            decQ.append(nums[r])
+            while incQ and incQ[-1] > nums[r]:
                 incQ.pop()
             incQ.append(nums[r])
             while decQ[0] - incQ[0] > limit:
-                if decQ[0] == nums[l]:
+                if nums[l] == decQ[0]:
                     decQ.popleft()
-                if incQ[0] == nums[l]:
+                if nums[l] == incQ[0]:
                     incQ.popleft()
                 l += 1
-            res = max(res, r-l+1)
-            r += 1
-        return res
+            ans = max(ans, r-l+1)
+        return ans
