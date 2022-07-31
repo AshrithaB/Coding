@@ -13,11 +13,10 @@ class Solution:
                     elif empty-1 < n and box[i][empty-1] == '.':
                         box[i][empty-1] = '#'
                         box[i][j] = '.'
-        res = [["" for l in range(m)] for r in range(n)]
-        k = m - 1
-        for x in range(m):
-            for y in range(n):
-                res[y][k] = box[x][y]
-            k -= 1 
+        res = [['' for i in range(m)] for j in range(n)]
+        k = m-1
+        for i in range(m):
+            for j in range(n):
+                res[j][k] = box[i][j]
+            k -= 1
         return res
-    
