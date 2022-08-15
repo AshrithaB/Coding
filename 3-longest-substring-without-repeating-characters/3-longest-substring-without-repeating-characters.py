@@ -12,4 +12,3 @@ class Solution:
                 l += 1
             maxLen = max(maxLen, r-l+1)
         return maxLen
-            
