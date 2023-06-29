@@ -1,16 +1,14 @@
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         if not len(digits): return []
-        digitlettermap = {"2":["a","b","c"], "3":["d","e","f"], "4":["g","h","i"], "5":["j","k","l"], "6":["m","n","o"], "7":["p","q","r","s"], "8":["t","u","v"], "9":["w","x","y","z"]}
+        digitlettermap = {"2":"abc", "3":"def", "4":"ghi", "5":"jkl", "6":"mno", "7":"pqrs", "8":"tuv", "9":"wxyz"}
         res = []
         def dfs(i, s):
-            if i == len(digits):
-                res.append(''.join(s))
+            if len(s) == len(digits):
+                res.append(s)
                 return
-            for j in range(len(digitlettermap[digits[i]])):
-                s.append(digitlettermap[digits[i]][j])
-                dfs(i+1, s)
-                s.pop()
-        
-        dfs(0, [])
+            for j in digitlettermap[digits[i]]:
+                dfs(i+1, s + j)
+        if digits:
+            dfs(0, "")
         return res
