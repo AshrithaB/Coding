@@ -4,20 +4,18 @@ class Solution:
         premap = {i:[] for i in range(numCourses)}
         for c, p in prerequisites:
             premap[c].append(p)
-        visit = set()
+        visit, cycle = set(), set()
         def dfs(i):
-            if i in visit:
+            if i in cycle:
                 return False
-            if premap[i] == []:
-                if i not in res:
-                    res.append(i)
+            if i in visit:
                 return True
-            visit.add(i)
+            cycle.add(i)
             for e in premap[i]:
                 if not dfs(e):
                     return False
-            visit.remove(i)
-            premap[i] = []
+            cycle.remove(i)
+            visit.add(i)
             res.append(i)
             return True
         for i in range(numCourses):
