@@ -6,9 +6,6 @@ class Solution:
         cursum = 0
         for r in range(len(nums)):
             cursum += nums[r]
-            if cursum - k in prefixhash:
-                subarray += prefixhash[cursum - k]
-            if cursum not in prefixhash:
-                prefixhash[cursum] = 0
-            prefixhash[cursum] += 1 
+            subarray += prefixhash.get(cursum-k, 0)
+            prefixhash[cursum] = 1 + prefixhash.get(cursum, 0)
         return subarray
