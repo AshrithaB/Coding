@@ -4,8 +4,5 @@ class Solution:
         res = [[0] * row for c in range(col)]
         for r in range(row):
             for c in range(col):
-                if r == c:
-                    res[r][c] = matrix[r][c]
-                else:
-                    res[c][r] = matrix[r][c]                   
+                res[c][r] = matrix[r][c]                   
         return res
