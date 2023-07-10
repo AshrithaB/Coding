@@ -1,11 +1,11 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        subarray = 0
-        prefixhash = {0:1}
-        l = 0
+        map = {0:1}
         cursum = 0
-        for r in range(len(nums)):
-            cursum += nums[r]
-            subarray += prefixhash.get(cursum-k, 0)
-            prefixhash[cursum] = 1 + prefixhash.get(cursum, 0)
-        return subarray
+        res = 0
+        for n in nums:
+            cursum += n
+            if cursum-k in map:
+                res += map[cursum-k]
+            map[cursum] = 1 + map.get(cursum, 0)
+        return res
