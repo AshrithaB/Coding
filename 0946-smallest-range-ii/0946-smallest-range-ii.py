@@ -4,7 +4,7 @@ class Solution:
         res = nums[-1] - nums[0]
         for i in range(len(nums)-1):
             j = i+1
-            low = min(nums[0]+k, nums[j]-k)
             high = max(nums[-1]-k, nums[i]+k)
+            low = min(nums[0]+k, nums[j]-k)
             res = min(res, high-low)
         return res
