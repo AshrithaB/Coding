@@ -1,16 +1,16 @@
 class Solution:
     def numPairsDivisibleBy60(self, time: List[int]) -> int:
-        diffhash = {}
-        res = 0
+        hashmap = {}
         for i in range(len(time)):
-            time[i] = time[i] % 60
-            diffhash[time[i]] = 1 + diffhash.get(time[i], 0)
-        for t in diffhash:
-            if t == 0 or t == 30:
-                n = diffhash[t]
-                if n > 1:
-                    res += ((n-1) * n) // 2
-            elif t < 30:
-                if 60-t in diffhash:
-                    res += diffhash[t] * diffhash[60-t]
+            time[i] %= 60
+            hashmap[time[i]] = 1 + hashmap.get(time[i], 0)
+        res = 0
+        for k in hashmap:
+            if k == 0 or k == 30:
+                if hashmap[k] > 1:
+                    res += (hashmap[k] * (hashmap[k] - 1))//2
+            elif k < 30:
+                if 60-k in hashmap:
+                    res += hashmap[k] * hashmap[60-k]
         return res
+            
