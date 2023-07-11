@@ -4,11 +4,10 @@ class Solution:
         if len(nums) == 1:
             return [nums.copy()]
         for i in range(len(nums)):
-            temp = nums.pop(0)
-            prems = self.permute(nums)
-            for p in prems:
-                p.append(temp)
+            n = nums.pop(0)
+            premutes = self.permute(nums)
+            for p in premutes:
+                p.append(n)
                 res.append(p)
-            nums.append(temp)
+            nums.append(n)
         return res
-        
