@@ -6,24 +6,22 @@ class RandomizedSet:
         self.size = 0
 
     def insert(self, val: int) -> bool:
-        if val in self.random:
-            return False
-        self.random.add(val)
-        self.size += 1
-        return True
-
+        if val not in self.random:
+            self.random.add(val)
+            self.size += 1
+            return True
+        return False
+        
     def remove(self, val: int) -> bool:
         if val in self.random:
             self.random.remove(val)
             self.size -= 1
             return True
         return False
-        
+
     def getRandom(self) -> int:
-        temp = random.randint(0, self.size-1)
-        new = list(self.random)
-        return new[temp]
-        
+        index = random.randint(0, self.size-1)
+        return list(self.random)[index]
 
 
 # Your RandomizedSet object will be instantiated and called as such:
