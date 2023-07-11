@@ -1,9 +1,16 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        t1, t2, t3, t4 = -prices[0], float('-inf'), float('-inf'), float('-inf')
-        for p in prices:
-            t1 = max(t1, -p)
-            t2 = max(t2, t1+p)
-            t3 = max(t3, t2-p)
-            t4 = max(t4, t3+p)
-        return max(t4, 0)
+        left = [0] * len(prices)
+        right = [0] * len(prices)
+        lmin, rmax = prices[0], prices[-1]
+        for i in range(1, len(prices)):
+            if lmin > prices[i]:
+                lmin = prices[i]
+            left[i] = max(left[i-1], prices[i] - lmin)
+        profit = left[-1]
+        for i in range(len(prices)-2, -1, -1):
+            if rmax < prices[i]:
+                rmax = prices[i]
+            right[i] = max(right[i+1], rmax - prices[i])
+            profit = max(profit, right[i+1]+left[i])
+        return profit
