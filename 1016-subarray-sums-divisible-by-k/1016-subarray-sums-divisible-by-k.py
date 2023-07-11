@@ -1,13 +1,11 @@
 class Solution:
     def subarraysDivByK(self, nums: List[int], k: int) -> int:
-        map = {0:1}
-        cursum = 0
         res = 0
+        subarray = 0
+        hashmap = {0:1}
         for n in nums:
-            cursum += n
-            div = cursum % k
-            if div in map:
-                res += map[div]
-            map[div] = 1 + map.get(div, 0)
+            subarray += n
+            div = subarray % k
+            res += hashmap.get(div, 0)
+            hashmap[div] = 1 + hashmap.get(div, 0)
         return res
-            
