@@ -1,9 +1,9 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        s1, s2, s3, s4 = -prices[0], float('-inf'), float('-inf'), float('-inf')
+        t1, t2, t3, t4 = -prices[0], float('-inf'), float('-inf'), float('-inf')
         for p in prices:
-            s1 = max(s1, -p)
-            s2 = max(s2, s1+p)
-            s3 = max(s3, s2-p)
-            s4 = max(s4, s3+p)
-        return max(s4, 0)
+            t1 = max(t1, -p)
+            t2 = max(t2, t1+p)
+            t3 = max(t3, t2-p)
+            t4 = max(t4, t3+p)
+        return max(t4, 0)
