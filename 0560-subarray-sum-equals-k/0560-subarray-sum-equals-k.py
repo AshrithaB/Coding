@@ -1,11 +1,10 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        map = {0:1}
         cursum = 0
         res = 0
+        hashmap = {0:1}
         for n in nums:
             cursum += n
-            if cursum-k in map:
-                res += map[cursum-k]
-            map[cursum] = 1 + map.get(cursum, 0)
+            res += hashmap.get(cursum-k, 0)
+            hashmap[cursum] = 1 + hashmap.get(cursum, 0)
         return res
