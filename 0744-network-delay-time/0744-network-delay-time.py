@@ -4,8 +4,6 @@ class Solution:
         adj = defaultdict(list)
         for u,v,w in times:
             adj[u].append([w,v])
-        if k not in adj:
-            return -1
         visit = set()
         minHeap = [[0,k]]
         while minHeap:
