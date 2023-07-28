@@ -18,8 +18,9 @@ class Solution:
             cost, i = heapq.heappop(minHeap)
             if i in visit:
                 continue
-            for c, j in adj[i]:
-                heapq.heappush(minHeap, [c, j])
             visit.add(i)
             res += cost
+            for c, j in adj[i]:
+                if j not in visit:
+                    heapq.heappush(minHeap, [c, j])
         return res
