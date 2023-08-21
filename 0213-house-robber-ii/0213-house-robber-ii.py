@@ -7,6 +7,4 @@ class Solution:
                 rob1 = rob2
                 rob2 = temp
             return rob2
-        if len(nums) < 2:
-            return max(nums)
-        return max(rob1(nums[:-1]), rob1(nums[1:]))
+        return max(nums[0], rob1(nums[:-1]), rob1(nums[1:]))
