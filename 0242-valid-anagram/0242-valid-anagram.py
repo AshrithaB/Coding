@@ -2,16 +2,12 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         if len(s) != len(t):
             return False
-        hashsets = {}
-        hashsett = {}
-        for i in range(len(s)):
-            if s[i] not in hashsets:
-                hashsets[s[i]] = 0
-            hashsets[s[i]] += 1
-        for i in range(len(t)):
-            if t[i] not in hashsett:
-                hashsett[t[i]] = 0
-            hashsett[t[i]] += 1
-        if hashsets == hashsett:
-            return True
-        return False
+        counter_s = {}
+        for ch in s:
+            counter_s[ch] = 1 + counter_s.get(ch, 0)
+        counter_t = {}
+        for ch in t:
+            counter_t[ch] = 1 + counter_t.get(ch, 0)
+            if ch in counter_s and counter_t[ch] > counter_s[ch]:
+                return False
+        return counter_s == counter_t
