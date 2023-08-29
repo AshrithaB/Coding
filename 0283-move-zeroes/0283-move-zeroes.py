@@ -5,10 +5,9 @@ class Solution:
         """
         if len(nums) == 1:
             return
-        c = nums.count(0)
-        i, j = 0, 0
+        j = 0
         for i in range(len(nums)):
-            while j < len(nums)-c and nums[j] != 0:
+            while j < len(nums)-1 and nums[j] != 0:
                 j += 1
             if nums[i] != 0 and i > j:
                 nums[i], nums[j] = nums[j], nums[i]
