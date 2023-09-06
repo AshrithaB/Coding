@@ -15,9 +15,7 @@ class Solution:
             left = height(node.left)
             right = height(node.right)
             result = True if abs(left[0] - right[0]) < 2 else False
-            return [(1 + max(left[0], right[0])), result and left[1] and right[1]]
-            
-        
+            return [(1 + max(left[0],right[0])), result and left[1] and right[1]]
+       
         res = height(root)
-        print(res)
         return res[1]
