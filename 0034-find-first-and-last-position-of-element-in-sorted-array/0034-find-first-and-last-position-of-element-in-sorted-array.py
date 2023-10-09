@@ -15,6 +15,8 @@ class Solution:
                 h = m-1
             else:
                 l = m+1
+        if start == -1:
+            return [start, end]
         l = 0
         h = len(nums)-1
         while l <= h:
